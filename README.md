@@ -18,6 +18,8 @@ Opinionated Shell, Vim, Tmux Setup
 
 ## Installation
 
+You need `bash`, `git` and `curl` to be present on machine in order to install `werkzeug`.
+
 ```bash
 curl SOMETHING
 ```

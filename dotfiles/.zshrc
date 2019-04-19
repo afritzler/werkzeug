@@ -17,8 +17,12 @@ export PATH="$PATH:$GOPATH/bin"
 export LANG=en_US.UTF-8
 
 ### Functions
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	alias pbcopy='xclip -selection clipboard'
+	alias pbpaste='xclip -selection clipboard -o'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+
+fi
 
 function set-kubeconfig() {
 	if [[ "$1" == "" ]]; then
