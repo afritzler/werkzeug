@@ -4,6 +4,8 @@ set -e
 
 rootdir="$HOME/.werkzeug"
 dotfilesdir="$rootdir/dotfiles"
+repo="https://github.com/afritzler/werkzeug"
+install_dir="$HOME/.werkzeug"
 
 # List of dotfiles to work with
 dotfiles=(
@@ -15,6 +17,16 @@ dotfiles=(
 # if it already exists.
 function install_or_update {
     echo "Installing werkzeug ..."
+    if [ ! -d $install_dir ]; then
+        echo "Installing werkzeug under $install_dir ..."
+        git clone $repo $install_dir
+    else
+        echo "Updating existing version ..."
+        (
+            cd $install_dir
+            git pull origin master
+        )
+    fi
 }
 
 # Check if there are existing dotfiles in your home folder
@@ -24,14 +36,13 @@ function backup_dotfiles {
     for i in "${dotfiles[@]}"
     do
         :
-        if [[ -L "$HOME/$i" ]]; then
+        if [ -L "$HOME/$i" ]; then
             echo "$i is a symlink. Skipping."
         else
             echo "$i is not a symlink. Creating a backup at ~/$i.bak"
         fi
     done
 }
-
 
 # Finilizing setup by running post installation setups.
 function post_installation {
