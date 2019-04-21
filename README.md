@@ -21,7 +21,7 @@ Opinionated Shell, Vim, Tmux Setup
 You need `bash`, `git` and `curl` to be present on machine in order to install `werkzeug`.
 
 ```bash
-curl SOMETHING
+curl https://raw.githubusercontent.com/afritzler/werkzeug/master/install.sh | bash
 ```
 
 ## Usage
