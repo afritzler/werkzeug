@@ -36,8 +36,12 @@ function backup_dotfiles {
     for i in "${dotfiles[@]}"
     do
         :
-        if [ -L "$HOME/$i" ]; then
-            echo "$i is a symlink. Skipping."
+        # Check if file is either a symlink or does not exist
+        if [ ! -f "$HOME/$i" ]; then
+            echo "$i file not found. Skipping backup."
+        elif [ -L "$HOME/$i" ] 
+        then
+            echo "$i is a symlink. Skipping backup."
         else
             echo "$i is not a symlink. Creating a backup at ~/$i.bak"
         fi
