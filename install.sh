@@ -68,7 +68,9 @@ function install_kube_ps1 {
 
 # Install additional oh-my-zsh themes
 function install_themes {
+    echo ">>> Installting themes ..."
     cp -r "$install_dir/themes/af.zsh-theme" "$HOME/.oh-my-zsh/custom/themes"
+    echo "Done."
 }
 
 # Finilizing setup by running post installation setups.
@@ -92,10 +94,10 @@ function post_installation {
             echo "$i is still present and is not a symlink. This should not have happened!"
         fi
     done
-    echo ">>> Installing addons ..."
     install_kube_ps1
-    echo ">>> Installting themes ..."
     install_themes
+
+    echo "Finished!"
 }
 
 install_or_update
