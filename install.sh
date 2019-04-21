@@ -40,7 +40,7 @@ function backup_dotfiles {
         # Check if file is either a symlink or does not exist
         if [ ! -f "$HOME/$i" ]; then
             echo "$i file not found. Skipping backup."
-        elif [ -L "$HOME/$i" ] 
+        elif [ -L "$HOME/$i" ]
         then
             echo "$i is a symlink. Skipping backup."
         else
@@ -50,9 +50,31 @@ function backup_dotfiles {
     done
 }
 
+# Install kube-ps1
+function install_kube_ps1 {
+    kubeps1dir="$install_dir/utils/kube-ps1"
+    kubepsrepo="https://github.com/jonmosco/kube-ps1"
+    if [ ! -d "$kubeps1dir" ]; then
+        echo "Installing kube-ps1 under $kubeps1dir  ..."
+        git clone $kubepsrepo $kubeps1dir
+    else
+        echo "Updating kube-ps1 ..."
+        (
+            cd $kubeps1dir
+            git pull origin master
+        )
+    fi
+}
+
+# Install additional oh-my-zsh themes
+function install_themes {
+    cp -r "$install_dir/themes/af.zsh-theme" "$HOME/.oh-my-zsh/custom/themes"
+}
+
 # Finilizing setup by running post installation setups.
 function post_installation {
     echo "Configuring werkzeug ..."
+    echo ">>> Installing dotfiles ..."
     for i in "${dotfiles[@]}"
     do
         :
@@ -70,6 +92,10 @@ function post_installation {
             echo "$i is still present and is not a symlink. This should not have happened!"
         fi
     done
+    echo ">>> Installing addons ..."
+    install_kube_ps1
+    echo ">>> Installting themes ..."
+    install_themes
 }
 
 install_or_update
