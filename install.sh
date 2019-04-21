@@ -6,6 +6,7 @@ rootdir="$HOME/.werkzeug"
 dotfilesdir="$rootdir/dotfiles"
 repo="https://github.com/afritzler/werkzeug"
 install_dir="$HOME/.werkzeug"
+dotfile_dir="$install_dir/dotfiles"
 
 # List of dotfiles to work with
 dotfiles=(
@@ -44,6 +45,7 @@ function backup_dotfiles {
             echo "$i is a symlink. Skipping backup."
         else
             echo "$i is not a symlink. Creating a backup at ~/$i.bak"
+            mv "$HOME/$i" "$HOME/$i.bak"
         fi
     done
 }
@@ -51,6 +53,23 @@ function backup_dotfiles {
 # Finilizing setup by running post installation setups.
 function post_installation {
     echo "Configuring werkzeug ..."
+    for i in "${dotfiles[@]}"
+    do
+        :
+        # Create symlinks
+        if [ ! -f "$HOME/$i" ]; then
+            echo "Creating symlink $i -> $dotfile_dir/$i"
+            ln -s "$dotfile_dir/$i" "$HOME/$i"
+        elif [ -L "$HOME/$i" ]
+        then
+            echo "Updating symlink $i -> $dotfile_dir/$i"
+            rm "$HOME/$i"
+            ln -s "$dotfile_dir/$i" "$HOME/$i"
+        else
+            # This should never happened!
+            echo "$i is still present and is not a symlink. This should not have happened!"
+        fi
+    done
 }
 
 install_or_update
