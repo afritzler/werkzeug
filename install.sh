@@ -33,7 +33,7 @@ function install_or_update {
 # Check if there are existing dotfiles in your home folder
 # and back them up if they are not symlinks
 function backup_dotfiles {
-    echo "Backing up old dotfiles ..."
+    echo ">>> Backing up old dotfiles ..."
     for i in "${dotfiles[@]}"
     do
         :
@@ -55,15 +55,16 @@ function install_kube_ps1 {
     kubeps1dir="$install_dir/utils/kube-ps1"
     kubepsrepo="https://github.com/jonmosco/kube-ps1"
     if [ ! -d "$kubeps1dir" ]; then
-        echo "Installing kube-ps1 under $kubeps1dir  ..."
+        echo ">>> Installing kube-ps1 under $kubeps1dir  ..."
         git clone $kubepsrepo $kubeps1dir
     else
-        echo "Updating kube-ps1 ..."
+        echo ">>> Updating kube-ps1 ..."
         (
             cd $kubeps1dir
             git pull origin master
         )
     fi
+    echo "Done."
 }
 
 # Install additional oh-my-zsh themes
@@ -73,9 +74,7 @@ function install_themes {
     echo "Done."
 }
 
-# Finilizing setup by running post installation setups.
-function post_installation {
-    echo "Configuring werkzeug ..."
+function install_dotfiles {
     echo ">>> Installing dotfiles ..."
     for i in "${dotfiles[@]}"
     do
@@ -94,9 +93,15 @@ function post_installation {
             echo "$i is still present and is not a symlink. This should not have happened!"
         fi
     done
+    echo "Done."
+}
+
+# Finilizing setup by running post installation setups.
+function post_installation {
+    echo "Configuring werkzeug ..."
+    install_dotfiles
     install_kube_ps1
     install_themes
-
     echo "Finished!"
 }
 
