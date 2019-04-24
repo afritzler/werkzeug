@@ -16,6 +16,10 @@ Opinionated Shell, Vim, Tmux Setup
 * Ubuntu
 * MacOS
 
+## Prerequisits 
+
+Please check the [/docs](/docs) folder for a detailed list of prerequisites.
+
 ## Installation
 
 You need `bash`, `git` and `curl` to be present on machine in order to install `werkzeug`.
