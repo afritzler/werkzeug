@@ -59,3 +59,6 @@ unalias ksd
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+homebrew_source="$HOME/.homebrew"
+[ -f "$homebrew_source" ] && source "$homebrew_source" 
