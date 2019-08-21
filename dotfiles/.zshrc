@@ -53,6 +53,7 @@ alias watchd='watch -c -d -n 1 '
 alias ks='kubectl -n kube-system'
 alias kg='kubectl -n garden'
 alias ka='kubectl get --all-namespaces'
+alias kk='export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"'
 unalias ksd
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
