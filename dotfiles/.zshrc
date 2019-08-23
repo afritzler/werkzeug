@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:$HOME/.rvm/bin"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+export GO111MODULE=on
 
 ### Environment
 export LANG=en_US.UTF-8
@@ -62,4 +63,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 homebrew_source="$HOME/.homebrew"
-[ -f "$homebrew_source" ] && source "$homebrew_source" 
+[ -f "$homebrew_source" ] && source "$homebrew_source"
