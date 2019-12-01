@@ -11,7 +11,7 @@ source $ZSH/oh-my-zsh.sh
 ### PATH exports
 export PATH="$PATH:$HOME/.rvm/bin"
 export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
 export GO111MODULE=on
 
 ### Environment
