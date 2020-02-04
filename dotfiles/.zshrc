@@ -9,10 +9,12 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 ### PATH exports
+export GOROOT=/usr/local/go
 export PATH="$PATH:$HOME/.rvm/bin"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
 export GO111MODULE=on
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 ### Environment
 export LANG=en_US.UTF-8
