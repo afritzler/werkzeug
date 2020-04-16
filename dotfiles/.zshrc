@@ -16,6 +16,11 @@ export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
 export GO111MODULE=on
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
+### python issues
+# https://stackoverflow.com/questions/50168647/multiprocessing-causes-python-to-crash-and-gives-an-error-may-have-been-in-progr
+# fixes ansible run issues
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 ### Environment
 export LANG=en_US.UTF-8
 
