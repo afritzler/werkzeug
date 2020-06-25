@@ -14,7 +14,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
 export GO111MODULE=on
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+export PATH="$PATH:/snap/bin"
 
 ### python issues
 # https://stackoverflow.com/questions/50168647/multiprocessing-causes-python-to-crash-and-gives-an-error-may-have-been-in-progr
