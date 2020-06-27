@@ -9,7 +9,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 ### PATH exports
-export GOROOT=/usr/local/go
+export GOROOT="/usr/lib/go"
 export PATH="$PATH:$HOME/.rvm/bin"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
@@ -66,6 +66,7 @@ alias kk='export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"'
 unalias ksd
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
