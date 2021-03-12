@@ -96,9 +96,15 @@ function install_dotfiles {
     echo "Done."
 }
 
+function install_oh_my_zsh {
+    echo ">>> Intalling oh-my-zsh ..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
 # Finilizing setup by running post installation setups.
 function post_installation {
     echo "Configuring werkzeug ..."
+    install_oh_my_zsh
     install_dotfiles
     install_kube_ps1
     install_themes
